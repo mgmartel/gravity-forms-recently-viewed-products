@@ -4,7 +4,7 @@ Donate link: http://trenvo.com/
 Tags: woocommerce, click stream, recent products, gravity forms, forms
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 0.9
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ None yet.
 2. Gravity Forms email with Recently Viewed Products using merge tag
 
 == Changelog ==
+
+= 1.0 =
+* Release to WP.org
 
 = 0.9 =
 * Pre-release on GitHub

@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms / WooCommerce Recently Viewed Products
 Plugin URI: http://trenvo.com
 Description: Adds recently viewed products to all Gravity Form submissions
-Version: 0.9
+Version: 1.1
 Author: Mike Martel
 Author URI: http://trenvo.com
 License: GPLv2

@@ -4,7 +4,7 @@ Donate link: http://trenvo.com/
 Tags: woocommerce, click stream, recent products, gravity forms, forms
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,7 @@ This plugin is very extensible and makes it easy to implement different ecommerc
 *   `gform_recently_viewed_products_query` (array) Query for get_posts (use to change the post type)
 *   `gform_recently_viewed_products`       (array) List of posts
 
-If you extend this plugin to 
+If you extend this plugin to
 
 == Installation ==
 
@@ -50,6 +50,9 @@ None yet.
 2. Gravity Forms email with Recently Viewed Products using merge tag
 
 == Changelog ==
+
+= 1.1 =
+* Fix bug in merge tag when no data is available
 
 = 1.0 =
 * Release to WP.org

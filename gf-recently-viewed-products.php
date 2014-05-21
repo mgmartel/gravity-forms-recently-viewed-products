@@ -10,7 +10,7 @@
  */
 class GF_Recently_Viewed_Products
 {
-    const VERSION = '0.9';
+    const VERSION = '1.1';
 
     protected $_field_key = 'recently_viewed_products';
     protected $_merge_tag = 'recently_viewed_products';
@@ -124,35 +124,40 @@ class GF_Recently_Viewed_Products
 	}
 
         private function _do_merge_tag( $text, $entryid, $format ) {
+            $to_replace = "";
+
             $data = gform_get_meta( $entryid, $this->_field_key );
+            if ( $data && !empty( $data ) ) {
 
-            if( $format == 'html' ) {
-                // Email helps me cling to the past
-                $to_replace = "<table width='99%' border='0' cellpadding='1' cellspacing='0' bgcolor='#EAEAEA'><tr><td><table width='100%' border='0' cellpadding='5' cellspacing='0' bgcolor='#FFFFFF'>\n";
-                $to_replace .= "<tr bgcolor='#EAF2FA'>
-                                    <td colspan='2'>
-                                        <font style='font-family:sans-serif;font-size:12px'><strong>" . __( 'Recently Viewed Products', 'wc-gf-viewed-products' ) . "</strong></font>
-                                    </td>
-                                </tr><tbody>\n";
-            }
-
-            $i = 1;
-            foreach( $data as $product ) {
                 if( $format == 'html' ) {
-                    $to_replace .= "<tr bgcolor='#FFFFFF'>
-                                        <td width='20'>&nbsp;</td>
-                                        <td>
-                                            <font style='font-family:sans-serif;font-size:12px'>$i. <a href='{$product['permalink']}'>{$product['title']}</a></font>
+                    // Email helps me cling to the past
+                    $to_replace .= "<table width='99%' border='0' cellpadding='1' cellspacing='0' bgcolor='#EAEAEA'><tr><td><table width='100%' border='0' cellpadding='5' cellspacing='0' bgcolor='#FFFFFF'>\n";
+                    $to_replace .= "<tr bgcolor='#EAF2FA'>
+                                        <td colspan='2'>
+                                            <font style='font-family:sans-serif;font-size:12px'><strong>" . __( 'Recently Viewed Products', 'wc-gf-viewed-products' ) . "</strong></font>
                                         </td>
-                                    </tr>";
-                } else {
-                    $to_replace .= "$i. {$product['title']} - {$product['permalink']}\n";
+                                    </tr><tbody>\n";
                 }
 
-                $i++;
-            }
-            if( $format == 'html' ) {
-                $to_replace .= "</tbody>\n</table></td></tr></table>\n\n";
+                $i = 1;
+                foreach( $data as $product ) {
+                    if( $format == 'html' ) {
+                        $to_replace .= "<tr bgcolor='#FFFFFF'>
+                                            <td width='20'>&nbsp;</td>
+                                            <td>
+                                                <font style='font-family:sans-serif;font-size:12px'>$i. <a href='{$product['permalink']}'>{$product['title']}</a></font>
+                                            </td>
+                                        </tr>";
+                    } else {
+                        $to_replace .= "$i. {$product['title']} - {$product['permalink']}\n";
+                    }
+
+                    $i++;
+                }
+                if( $format == 'html' ) {
+                    $to_replace .= "</tbody>\n</table></td></tr></table>\n\n";
+                }
+
             }
 
             return str_replace( '{' . $this->_merge_tag . '}', $to_replace, $text );
